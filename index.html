@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astitva - Empowering Women | Navratan Foundations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    <style>
+        
+        .hero {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none;  /* text select / click na ho */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);  /* dark overlay taaki text clear dikhe */
+    z-index: -1;
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+        :root {
+            /*--primary: #e91e63; */     /* Vibrant pink for empowerment theme */
+            --primary: #fbd45a;
+            --secondary: #fbd45a;    /* Deep purple */
+            --accent: white;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background: #fff;
+            line-height: 1.7;
+        }
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Hero Section with Background Video */
+      
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -2;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: -1;
+        }
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+        .hero h1 {
+            color: white;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--primary);
+            color: black;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(233,30,99,0.3);
+        }
+        .btn:hover {
+            transform: translateY(-5px);
+            background: var(--accent);
+            box-shadow: 0 12px 30px rgba(255,64,129,0.4);
+        }
+
+        /* Intro Section */
+.intro-section {
+    background: #fffaf5; /* Soft pinkish background for warmth */
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.intro-text .lead-text {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+.lead-text{
+    text-align: center;
+    margin-bottom: 35px;
+    max-width: 70%;
+    font-size: 19px;
+}
+
+.intro-text p {
+    font-size: 1.15rem;
+    margin-bottom: 1.8rem;
+    color: #444;
+}
+
+.key-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(233,30,99,0.12);
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.highlight-item i {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+.intro-visual {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.intro-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(233,30,99,0.8), transparent);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+    .intro-visual {
+        order: -1; /* Image upar aaye mobile pe */
+    }
+}
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.8rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Stats Grid */
+        .stats {
+            background: linear-gradient(135deg, var(--secondary), #fbd45a);
+            color: black;
+            padding: 80px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item {
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .stat-item i {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: black;
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            color: black;
+        }
+
+        /* Gallery Carousel */
+        .gallery-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+        }
+        .gallery-carousel img, .gallery-carousel video {
+            width: 380px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            transition: transform 0.4s;
+        }
+        .gallery-carousel img:hover, .gallery-carousel video:hover {
+            transform: scale(1.05);
+        }
+
+        /* Success Stories */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        .story-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: transform 0.4s;
+        }
+        .story-card:hover {
+            transform: translateY(-15px);
+        }
+        .story-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+        .story-content {
+            padding: 25px;
+            text-align: center;
+        }
+        .story-content h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Network section 2 */
+        /* Network Section – Modern Design */
+.network-section {
+    background: linear-gradient(to bottom, #fffaf5, #ffffff);
+    padding: 100px 0;
+}
+
+.network-map {
+    height: 500px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(233,30,99,0.15);
+    margin-bottom: 60px;
+    overflow: hidden;
+}
+
+.centers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.center-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+}
+
+.center-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px #5d5c5c;
+    border-color: var(--primary);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.center-card h4 {
+    margin: 0;
+    color: black;
+    font-size: 1.4rem;
+}
+
+.center-badge {
+    background: var(--primary);
+    color: black;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.center-card .address,
+.center-card .course {
+    margin: 12px 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.center-card i {
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+.directions-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: black;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.directions-btn:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+        /* Map */
+        #map {
+            height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+
+        /* Centers Table */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+        th, td {
+            padding: 18px;
+            text-align: left;
+            background: white;
+        }
+        th {
+            background: var(--primary);
+            color: white;
+        }
+        tr {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        td a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: #f8f9fa;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 10px 0;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .accordion.active, .accordion:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .panel {
+            padding: 0 20px 20px;
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border-radius: 0 0 12px 12px;
+        }
+
+        /* Donation */
+        .donation {
+            background: linear-gradient(135deg, #8ddcfb, #8ddcfb);
+            text-align: center;
+        }
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .donation-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(233,30,99,0.15);
+        }
+        .donation-item h3 {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        /* qr donation */
+        /* Center QR + Button perfectly */
+.qr-donate-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto 30px;
+    max-width: 400px;          /* QR ke around space control karega */
+    text-align: center;
+}
+
+.qr-image {
+    max-width: 260px;          /* QR size adjust kar sakte ho */
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    border: 8px solid white;   /* white border for clean look */
+}
+
+.qr-caption {
+    font-size: 1.1rem;
+    color: #444;
+    margin: 0 0 25px 0;
+    font-weight: 500;
+}
+
+.donate-btn {
+    font-size: 1.4rem !important;
+    padding: 18px 60px !important;
+    min-width: 280px;          /* button ko thoda wide rakha center feel ke liye */
+    text-align: center;
+}
+
+/* Optional: Mobile pe bhi acha dikhe */
+@media (max-width: 600px) {
+    .qr-donate-center {
+        max-width: 90%;
+    }
+    .qr-image {
+        max-width: 220px;
+    }
+}
+
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: black;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .sticky-cta:hover {
+            background: var(--accent);
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.2rem; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Hero Section with YouTube Background -->
+<section class="hero">
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/F6pOmCTAPeI?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=F6pOmCTAPeI&playsinline=1&modestbranding=1&iv_load_policy=3"
+            title="Women Empowerment Sewing Background"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Astitva</h1>
+        <p>Empowering Women Through Skill, Confidence & Independence</p>
+        <a href="#donate" class="btn">Support A Woman Today</a>
+    </div>
+</section>
+
+<!-- about project -->
+ <!-- Astitva Introduction / About Section -->
+<section class="intro-section">
+    <div class="container">
+        <h2 class="section-title">Astitva: A Woman's Journey Towards Self-Empowerment</h2>
+         
+        <div class="intro-grid">
+            
+            <!-- Left: Text Content -->
+            <div class="intro-text">
+                
+                <p>
+                    Launched in <strong>2009</strong> by Navratan Foundations, <strong>Astitva</strong> is our flagship initiative dedicated to breaking this cycle. We reach out to marginalized women in villages, slums, and low-income communities across Delhi/NCR, providing them with free vocational training in tailoring and stitching — transforming them from dependent homemakers to confident, financially independent earners.
+                </p>
+                
+                <div class="key-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Since 2009</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-users"></i>
+                        <span>Over 10,000 Women Empowered</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>37 Active Centers in Delhi/NCR</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Certification & Job Placement Support</span>
+                    </div>
+                </div>
+               
+                
+                <a href="#donate" class="btn">Join Us in Empowering More Lives</a>
+            </div>
+            
+            <!-- Right: Image / Visual (optional - replace with your image) -->
+            <div class="intro-visual">
+                
+                <img src="https://thedesaifoundation.org/wp-content/uploads/unlimited_elements/sewing-1.png" alt="Women learning tailoring in Astitva center" class="intro-img">
+                <div class="image-overlay">
+                    <p>Skills Today, Independence Tomorrow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Mission -->
+    <section class="mission">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <p style="font-size: 1.3rem; max-width: 900px; margin: 0 auto; text-align: center;">
+                Astitva is dedicated to uplifting underprivileged women by providing vocational training in tailoring and related skills, enabling financial independence and self-reliance since 2009.
+            </p>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title" style="color: black;">Our Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <h3>10,000+</h3>
+                    <p>Women Empowered</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-school"></i>
+                    <h3>37</h3>
+                    <p>Active Centers</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>85%</h3>
+                    <p>Sustainable Livelihood</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>100,000+</h3>
+                    <p>Training Hours/Year</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>15+</h3>
+                    <p>Corporate Partners</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Proof of Work -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">A Day in Astitva</h2>
+            <div class="gallery-carousel">
+                <img src="https://thedesaifoundation.org/wp-content/uploads/unlimited_elements/sewing-1.png" alt="Women in sewing class">
+                <img src="https://tzuchi-en-backend.storage.googleapis.com/content/images/2024/11/1-800-4.jpg" alt="Group training session">
+                <img src="https://blog.rotary.org/wp-content/uploads/2025/03/adivasi-widows-hero.jpg" alt="Women learning stitching">
+                <img src="https://thumbs.dreamstime.com/b/group-woman-tailoring-class-discuissing-teacher-cloth-stitching-training-concept-skill-development-250148147.jpg" alt="Tailoring discussion">
+                <img src="https://tzuchi-en-backend.storage.googleapis.com/content/images/2024/11/2-800-6.jpg" alt="Empowered women sewing">
+                <img src="https://media.holtinternational.org/wp-content/uploads/2023/07/Nisha.jpg" alt="Woman with sewing machine">
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="stories">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <img src="https://www.shutterstock.com/image-photo/portrait-happy-traditional-indian-woman-260nw-2292831577.jpg" alt="Sunita">
+                    <div class="story-content">
+                        <h4>Sunita</h4>
+                        <p>From domestic worker to successful boutique owner in just 6 months through Astitva training.</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <img src="story1.jpg" alt="Priya">
+                    <div class="story-content">
+                        <h4>Priya</h4>
+                        <p>Gained financial stability and now supports her family independently with tailoring skills.</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <img src="https://www.globalgiving.org/pfil/13929/pict_original.jpg" alt="Rani">
+                    <div class="story-content">
+                        <h4>Rani</h4>
+                        <p>Built her own stitching business and became a role model in her community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- network section 2 -->
+     <!-- The Network: Our Centers – Modern Card + Map Design -->
+<section class="network-section">
+    <div class="container">
+        <h2 class="section-title">Our Network of Empowerment Centers</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.2rem; color: #555;">
+            Astitva ab Delhi/NCR ke 37+ centers mein faila hua hai. Har center underprivileged women ko free training deta hai. Map pe explore karein aur centers ki list dekhein!
+        </p>
+
+        <!-- Interactive Map -->
+        <!-- <div id="map" class="network-map"></div> -->
+
+        <!-- Centers as Beautiful Cards -->
+        <div class="centers-grid">
+            <!-- Example Card – Repeat for all centers -->
+            <div class="center-card" data-lat="28.5961" data-lng="77.3639" data-title="Noida Sector 52 Center">
+                <div class="card-header">
+                    <h4>Noida Sector 52 Center</h4>
+                </div>
+                <span class="center-badge">Main Hub</span>
+                <p class="address"><i class="fas fa-map-marker-alt"></i> E-74, Sector 52, Noida, Uttar Pradesh 201307</p>
+                <p class="course"><i class="fas fa-book-open"></i> Major Courses: Basic Stitching, Advanced Tailoring</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=28.5961,77.3639" target="_blank" class="directions-btn">Get Directions →</a>
+            </div>
+
+            <div class="center-card" data-lat="28.5488" data-lng="77.3275" data-title="Bhangel Center">
+                <div class="card-header">
+                    <h4>Bhangel Center</h4>
+                    
+                </div>
+                <span class="center-badge">Community Focus</span>
+                <p class="address"><i class="fas fa-map-marker-alt"></i> Opposite Police Station, Bhangel, Noida</p>
+                <p class="course"><i class="fas fa-book-open"></i> Major Courses: Fashion Design Basics</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=28.5488,77.3275" target="_blank" class="directions-btn">Get Directions →</a>
+            </div>
+
+            <div class="center-card" data-lat="28.505" data-lng="77.382" data-title="Sector 132 Center">
+                <div class="card-header">
+                    <h4>Sector 132 Center</h4>
+                    
+                </div>
+                <span class="center-badge">Advanced Training</span>
+                <p class="address"><i class="fas fa-map-marker-alt"></i> Tower A – 310, ATS Bouquet, Sector 132, Noida</p>
+                <p class="course"><i class="fas fa-book-open"></i> Major Courses: Financial Literacy & Soft Skills</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=28.505,77.382" target="_blank" class="directions-btn">Get Directions →</a>
+            </div>
+
+            <div class="center-card" data-lat="28.5921" data-lng="77.0462" data-title="Dwarka Sector 12 Center">
+                <div class="card-header">
+                    <h4>Dwarka Sector 12 Center</h4>
+                    
+                </div>
+                <span class="center-badge">Urban Reach</span>
+                <p class="address"><i class="fas fa-map-marker-alt"></i> 309 Pocket 7, Sector 12, Dwarka, Delhi</p>
+                <p class="course"><i class="fas fa-book-open"></i> Major Courses: Complete Tailoring Program</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=28.5921,77.0462" target="_blank" class="directions-btn">Get Directions →</a>
+            </div>
+
+            <!-- Add more cards for remaining centers (up to 37 if you have data) -->
+            <!-- Example placeholder -->
+            <div class="center-card" data-lat="28.4595" data-lng="77.0266" data-title="Gurgaon Center">
+                <div class="card-header">
+                    <h4>Gurgaon Center</h4>
+                    
+                </div>
+                <span class="center-badge">New Expansion</span>
+                <p class="address"><i class="fas fa-map-marker-alt"></i> Sample Location, Gurgaon, Haryana</p>
+                <p class="course"><i class="fas fa-book-open"></i> Major Courses: Entrepreneurship Skills</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=28.4595,77.0266" target="_blank" class="directions-btn">Get Directions →</a>
+            </div>
+
+            <!-- ... repeat pattern for all centers -->
+        </div>
+    </div>
+</section>
+
+   
+    <!-- Curriculum -->
+    <section class="curriculum">
+        <div class="container">
+            <h2 class="section-title">What We Teach</h2>
+            <button class="accordion">View Course Breakdown</button>
+            <div class="panel">
+                <ul style="list-style:none; padding:20px 0;">
+                    <li><i class="fas fa-check" style="color:var(--success); margin-right:10px;"></i>Basic Stitching</li>
+                    <li><i class="fas fa-check" style="color:var(--success); margin-right:10px;"></i>Advanced Tailoring</li>
+                    <li><i class="fas fa-check" style="color:var(--success); margin-right:10px;"></i>Fashion Design Basics</li>
+                    <li><i class="fas fa-check" style="color:var(--success); margin-right:10px;"></i>Financial Literacy</li>
+                    <li><i class="fas fa-check" style="color:var(--success); margin-right:10px;"></i>Soft Skills & Entrepreneurship</li>
+                </ul>
+            </div>
+            <h3 style="text-align:center; margin:40px 0 20px;">Certification</h3>
+            <div style="text-align:center;">
+                <img src="https://img.yumpu.com/36945672/1/500x640/tailoring-certificate-1-nvti.jpg" alt="Sample Certificate" style="max-width:400px; filter:blur(1.5px); border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation CTA -->
+    <section class="donation" id="donate">
+        <div class="container">
+            <h2 class="section-title">Support Astitva</h2>
+            <p style="font-size:1.3rem; max-width:800px; margin:0 auto 50px; text-align:center;">
+                Your contribution directly changes lives. See how your donation makes an impact:
+            </p>
+            <div class="donation-grid">
+                <div class="donation-item">
+                    <h3>₹1,000</h3>
+                    <p>Provides a complete sewing kit for one student</p>
+                </div>
+                <div class="donation-item">
+                    <h3>₹5,000</h3>
+                    <p>Sponsors full 6-month training for one woman</p>
+                </div>
+                <div class="donation-item">
+                    <h3>₹10,000</h3>
+                    <p>Helps maintain a training center for a month</p>
+                </div>
+            </div>
+           
+            <div class="qr-donate-center">
+            <img src="qr.jpg" alt="Scan to Donate - Astitva QR Code" 
+                 class="qr-image">
+
+            <!-- <p class="qr-caption">Scan and pay with any BHIM UPI app</p> -->
+
+            <a href="YOUR_DONATION_LINK_HERE" class="btn donate-btn">Donate Now</a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Sticky CTA Bar -->
+    <a href="#donate" class="sticky-cta">
+        Empower a Woman Today → Donate Now
+    </a>
+
+    <script>
+        // Accordion functionality
+        const acc = document.getElementsByClassName("accordion");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+        // Google Maps init (replace YOUR_GOOGLE_MAPS_API_KEY)
+        function initMap() {
+            const ncrCenter = { lat: 28.6139, lng: 77.2090 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: ncrCenter,
+                styles: [
+                    { featureType: "water", elementType: "geometry", stylers: [{ color: "#e9e9e9" }, { lightness: 17 }] },
+                    { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#f5f5f5" }, { lightness: 20 }] },
+                    // Add more styles if needed
+                ]
+            });
+
+            // Example markers - add your actual centers
+            const centers = [
+                { lat: 28.5961, lng: 77.3639, title: "Noida Sector 52 Center" },
+                // Add more
+            ];
+
+            centers.forEach(center => {
+                new google.maps.Marker({
+                    position: { lat: center.lat, lng: center.lng },
+                    map: map,
+                    title: center.title,
+                    animation: google.maps.Animation.DROP
+                });
+            });
+        }
+    </script>
+</body>
+</html>
